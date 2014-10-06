@@ -216,8 +216,12 @@ function onForegroundWindowChange(app, title)
     local wantActive = false
     activeApp = ""
 
+    --myo.debug('app: '..app..', title: '..title)
+    --myo.debug('title match: '..string.match(title, " Rdio$"))
+
     if platform == "MacOS" then
-        if app == "com.rdio.desktop" then
+        if app == "com.rdio.desktop" or
+           (app == "com.google.Chrome" and string.find(title, " Rdio$")) then
             -- Keynote on MacOS
             wantActive = true
             activeApp = "Rdio"
